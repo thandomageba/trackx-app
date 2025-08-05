@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #fffaf3;
+  padding: 1rem;
+}
+
+.dashboard {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #003b5c;
+  color: white;
+  padding: 1rem;
+  border-radius: 15px 15px 0 0;
+}
+
+.dashboard-header .logo {
+  width: 50px;
+  height: 50px;
+}
+
+.dashboard-header h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.subheading {
+  font-size: 1.2rem;
+  margin: 0.2rem 0;
+  font-weight: 600;
+}
+
+.welcome {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 15px;
+  background-color: #e0f7f5;
+}
+
+.card.teal {
+  background-color: #01989f;
+  color: white;
+}
+
+.card.orange-border {
+  border: 3px solid #f47c24;
+  background-color: #fffaf3;
+  color: #003b5c;
+}
+
+.card .text h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.card .text p {
+  margin: 0.3rem 0 0 0;
+  font-size: 0.95rem;
+}
+
+.card .icon {
+  font-size: 1.5rem;
+}
+
+.card.orange-border .icon.orange {
+  color: #f47c24;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 500;
+}

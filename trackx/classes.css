@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f0f2f5; /* Light background for the page */
+}
+
+.menu-container {
+    border: 1px solid #dcdcdc;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 20px auto; /* Center the container with some top/bottom margin */
+    background-color: #ffffff; /* White background for the menu container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.menu-header {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #2c3e50; /* Darker blue-grey for headers */
+    text-align: center;
+    border-bottom: 2px solid #3498db; /* Blue underline */
+    padding-bottom: 10px;
+}
+
+.menu-section {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #ecf0f1; /* Light grey background for sections */
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+}
+
+.menu-section h3 {
+    margin-top: 0;
+    font-size: 1.3em;
+    color: #34495e; /* Slightly darker text for section headers */
+    border-bottom: 1px dashed #b1c7da; /* Dashed underline */
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-list li {
+    background-color: #e8f0fe; /* Very light blue for list items */
+    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #cce0ff;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.menu-list li:hover {
+    background-color: #dbe8fd; /* Slightly darker blue on hover */
+}
+
+.menu-list li strong {
+    color: #0056b3; /* Strong blue for names/main text */
+    font-weight: bold;
+}
+
+.menu-list li a {
+    color: #2980b9; /* A different blue for links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-list li a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .menu-container {
+        margin: 10px;
+        padding: 15px;
+    }
+    .menu-header {
+        font-size: 1.8em;
+    }
+    .menu-section {
+        padding: 10px;
+    }
+    .menu-list li {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: flex-start;
+    }
+}

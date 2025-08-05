@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Learner Dashboard</title>
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+
+    <div class="menu-container">
+        <h1 class="menu-header" id="learnerName"></h1>
+
+        <div class="menu-section">
+            <h3>Your Classes</h3>
+            <ul id="classesList" class="menu-list">
+                </ul>
+        </div>
+
+        <div class="menu-section">
+            <h3>Your Teachers</h3>
+            <ul id="teachersList" class="menu-list">
+                </ul>
+        </div>
+
+        <div class="menu-section">
+            <h3>Your Advisors</h3>
+            <ul id="advisorsList" class="menu-list">
+                </ul>
+        </div>
+
+        <div class="menu-section">
+            <h3>Important Contacts</h3>
+            <ul id="contactsList" class="menu-list">
+                </ul>
+        </div>
+
+        <div class="menu-section settings-section">
+            <h3>Settings</h3>
+
+            <div class="setting-subsection">
+                <h4>Profile Settings</h4>
+                <label for="learnerEmail">Email:</label>
+                <input type="email" id="learnerEmail" value="alice.j@example.com" disabled>
+                <button id="changePasswordBtn">Change Password</button>
+            </div>
+
+            <div class="setting-subsection">
+                <h4>Notification Preferences</h4>
+                <label>
+                    <input type="checkbox" id="emailNotifications" checked>
+                    Receive Email Notifications
+                </label>
+                <label>
+                    <input type="checkbox" id="smsNotifications">
+                    Receive SMS Reminders (for critical alerts)
+                </label>
+            </div>
+
+            <div class="setting-subsection feedback-subsection">
+                <h4>Provide Feedback</h4>
+                <p>We'd love to hear your thoughts to improve the app!</p>
+                <label for="feedbackRating">Overall Rating:</label>
+                <select id="feedbackRating">
+                    <option value="5">Excellent</option>
+                    <option value="4">Good</option>
+                    <option value="3">Average</option>
+                    <option value="2">Poor</option>
+                    <option value="1">Very Poor</option>
+                </select>
+                <br><br>
+                <label for="feedbackComments">Comments:</label>
+                <textarea id="feedbackComments" rows="5" placeholder="Tell us what you like, what could be improved, or any issues you've encountered..."></textarea>
+                <button id="submitFeedbackBtn">Submit Feedback</button>
+                <p id="feedbackMessage" style="color: green; font-weight: bold; margin-top: 10px;"></p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- Learner Data (Example: In a real application, this might come from an API/database) ---
+        const learnersData = {
+            "learner123": {
+                name: "Sibonelisosenkosi Zulu",
+                email: "alice.j@example.com", // Added email for settings
+                classes: [
+                    { name: "Mathematics I", id: "math101" },
+                    { name: "English Literature", id: "eng202" },
+                    { name: "Computer Science Basics", id: "cs101" },
+                    { name: "Accounting", id: "aco204" },
+                    { name: "Business Studies", id: "BuS105" },
+                    { name: "Afrikaans", id: "afr106" }
+                ],
+                teachers: [
+                    { name: "Mr. David Lee", subject: "Mathematics" },
+                    { name: "Ms. Sarah Chen", subject: "English" },
+                    { name: "Dr. Emily White", subject: "Computer Science" },
+                    { name: "Mr. John Smith", subject: "Accounting" },
+                    { name: "Ms. Lisa Johnson", subject: "Business Studies" },
+                    { name: "Mr. Peter Brown", subject: "Afrikaans" }
+                ],
+                advisors: [
+                    { name: "Ms. Jessica Brown", role: "Academic Advisor", email: "jbrown@example.com" }
+                ],
+                contacts: [
+                    { name: "Student Support", phone: "012-123-4567" },
+                    { name: "IT Helpdesk", phone: "012-987-6543" }
+                ],
+                settings: { // Example settings data
+                    emailNotifications: true,
+                    smsNotifications: false
+                }
+            },
+            "learner456": {
+                name: "Bob Williams",
+                email: "bob.w@example.com",
+                classes: [
+                    { name: "Physics II", id: "phy201" },
+                    { name: "Chemistry Lab", id: "chem303" }
+                ],
+                teachers: [
+                    { name: "Dr. Anna Garcia", subject: "Physics" },
+                    { name: "Prof. Mark Davis", subject: "Chemistry" }
+                ],
+                advisors: [
+                    { name: "Mr. Chris Green", role: "Career Counselor", email: "cgreen@example.com" }
+                ],
+                contacts: [],
+                settings: {
+                    emailNotifications: false,
+                    smsNotifications: true
+                }
+            }
+        };
+
+        // --- Function to get learner ID from URL (or hardcode for demonstration) ---
+        function getLearnerIdFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('learnerId') || "learner123"; // Default to learner123 if no ID in URL
+        }
+
+        // --- Populate the dashboard and settings ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const learnerId = getLearnerIdFromUrl();
+            const learner = learnersData[learnerId];
+
+            if (learner) {
+                document.getElementById('learnerName').textContent = `Welcome, ${learner.name}!`;
+
+                // Populate Dashboard Sections (existing logic)
+                const classesList = document.getElementById('classesList');
+                classesList.innerHTML = '';
+                learner.classes.forEach(cls => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${cls.name}</strong> (ID: ${cls.id})`;
+                    classesList.appendChild(li);
+                });
+
+                const teachersList = document.getElementById('teachersList');
+                teachersList.innerHTML = '';
+                learner.teachers.forEach(teacher => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${teacher.name}</strong> (${teacher.subject})`;
+                    teachersList.appendChild(li);
+                });
+
+                const advisorsList = document.getElementById('advisorsList');
+                advisorsList.innerHTML = '';
+                learner.advisors.forEach(advisor => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${advisor.name}</strong> (${advisor.role}) <a href="mailto:${advisor.email}">Email</a>`;
+                    advisorsList.appendChild(li);
+                });
+
+                const contactsList = document.getElementById('contactsList');
+                contactsList.innerHTML = '';
+                if (learner.contacts && learner.contacts.length > 0) {
+                    learner.contacts.forEach(contact => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<strong>${contact.name}</strong>: ${contact.phone}`;
+                        contactsList.appendChild(li);
+                    });
+                } else {
+                    const li = document.createElement('li');
+                    li.textContent = "No additional contacts listed.";
+                    contactsList.appendChild(li);
+                }
+
+                // Populate Settings Section
+                document.getElementById('learnerEmail').value = learner.email;
+                document.getElementById('emailNotifications').checked = learner.settings.emailNotifications;
+                document.getElementById('smsNotifications').checked = learner.settings.smsNotifications;
+
+                // Event Listeners for Settings (saving preferences would require a backend)
+                document.getElementById('changePasswordBtn').addEventListener('click', () => {
+                    alert('Change password functionality would be implemented here (e.g., redirect to a change password page).');
+                });
+
+                document.getElementById('emailNotifications').addEventListener('change', (event) => {
+                    console.log(`Email notifications changed to: ${event.target.checked}`);
+                    // In a real app: Send this preference update to your server
+                });
+
+                document.getElementById('smsNotifications').addEventListener('change', (event) => {
+                    console.log(`SMS notifications changed to: ${event.target.checked}`);
+                    // In a real app: Send this preference update to your server
+                });
+
+                // Feedback Submission Logic
+                document.getElementById('submitFeedbackBtn').addEventListener('click', () => {
+                    const rating = document.getElementById('feedbackRating').value;
+                    const comments = document.getElementById('feedbackComments').value;
+                    const feedbackMessage = document.getElementById('feedbackMessage');
+
+                    if (comments.trim() === '') {
+                        feedbackMessage.style.color = 'red';
+                        feedbackMessage.textContent = 'Please enter your comments.';
+                        return;
+                    }
+
+                    console.log(`--- Feedback from ${learner.name} (ID: ${learnerId}) ---`);
+                    console.log(`Rating: ${rating} stars`);
+                    console.log(`Comments: ${comments}`);
+                    // In a real application, you would send this data to your server here
+                    // e.g., using fetch() or XMLHttpRequest to a feedback API endpoint.
+
+                    feedbackMessage.style.color = 'green';
+                    feedbackMessage.textContent = 'Thank you for your feedback!';
+                    // Clear the form after submission
+                    document.getElementById('feedbackRating').value = '5';
+                    document.getElementById('feedbackComments').value = '';
+
+                    // Hide message after a few seconds
+                    setTimeout(() => {
+                        feedbackMessage.textContent = '';
+                    }, 5000);
+                });
+
+
+            } else {
+                document.getElementById('learnerName').textContent = "Learner not found.";
+                // Clear all dynamic sections
+                document.getElementById('classesList').innerHTML = '';
+                document.getElementById('teachersList').innerHTML = '';
+                document.getElementById('advisorsList').innerHTML = '';
+                document.getElementById('contactsList').innerHTML = '';
+                // Hide settings section if no learner
+                document.querySelector('.settings-section').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

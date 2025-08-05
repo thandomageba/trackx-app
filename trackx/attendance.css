@@ -1,0 +1,128 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fffaf3;
+  margin: 0;
+  padding: 1rem;
+  color: #002b45;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.summary div {
+  flex: 1;
+}
+
+.summary strong {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.calendar {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.calendar h2 {
+  margin-bottom: 0.5rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.3rem;
+}
+
+.calendar-grid div {
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-weight: 600;
+}
+
+.day-green {
+  background-color: #1abc9c;
+  color: white;
+}
+
+.day-red {
+  background-color: #f85b5b;
+  color: white;
+}
+
+.day-neutral {
+  color: #003b5c;
+}
+
+.classes {
+  margin-top: 1rem;
+}
+
+.class-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0.7rem;
+}
+
+.class-info {
+  display: flex;
+  align-items: center;
+}
+
+.class-info img {
+  width: 30px;
+  margin-right: 0.8rem;
+}
+
+.status-icon {
+  font-size: 1.4rem;
+}
+
+.status-green {
+  color: #1abc9c;
+}
+
+.status-red {
+  color: #f85b5b;
+}
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.7rem 0;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.nav-item {
+  text-align: center;
+}
+
+.nav-item img {
+  width: 24px;
+  display: block;
+  margin: 0 auto 0.3rem;
+}

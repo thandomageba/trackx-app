@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Learner Dashboard</title>
+    <link rel="stylesheet" href="classes.css">
+</head>
+<body>
+
+    <div class="menu-container">
+        <h1 class="menu-header" id="learnerName"></h1>
+
+        <div class="menu-section">
+            <h3>Your Classes</h3>
+            <ul id="classesList" class="menu-list">
+                </ul>
+        </div>
+
+        <div class="menu-section">
+            <h3>Your Teachers</h3>
+            <ul id="teachersList" class="menu-list">
+                </ul>
+        </div>
+
+        <div class="menu-section">
+            <h3>Your Advisors</h3>
+            <ul id="advisorsList" class="menu-list">
+                </ul>
+        </div>
+
+        <div class="menu-section">
+            <h3>Important Contacts</h3>
+            <ul id="contactsList" class="menu-list">
+                </ul>
+        </div>
+    </div>
+
+    <script>
+        // --- Learner Data (Example: In a real application, this might come from an API/database) ---
+        const learnersData = {
+            "learner123": {
+                name: "Sibonelisosenkosi Zulu",
+                classes: [
+                    { name: "Mathematics I", id: "math101" },
+                    { name: "English Literature", id: "eng202" },
+                    { name: "Computer Science Basics", id: "cs101" },
+                    { name: "Accounting", id: "aco204" },
+                    { name: "Business Studies", id: "BuS105" },
+                    { name: "Afrikaans", id: "afr106" }
+
+                ],
+                teachers: [
+                    { name: "Mr. David Lee", subject: "Mathematics" },
+                    { name: "Ms. Sarah Chen", subject: "English" },
+                    { name: "Dr. Emily White", subject: "Computer Science" },
+                    { name: "Mr. John Smith", subject: "Accounting" },
+                    { name: "Ms. Lisa Johnson", subject: "Business Studies" },
+                    { name: "Mr. Peter Brown", subject: "Afrikaans" }
+                ],
+                advisors: [
+                    { name: "Ms. Jessica Brown", role: "Academic Advisor", email: "jbrown@example.com" }
+                ],
+                contacts: [
+                    { name: "Student Support", phone: "012-123-4567" },
+                    { name: "IT Helpdesk", phone: "012-987-6543" }
+                ]
+            },
+            "learner456": {
+                name: "Bob Williams",
+                classes: [
+                    { name: "Physics II", id: "phy201" },
+                    { name: "Chemistry Lab", id: "chem303" }
+                ],
+                teachers: [
+                    { name: "Dr. Anna Garcia", subject: "Physics" },
+                    { name: "Prof. Mark Davis", subject: "Chemistry" }
+                ],
+                advisors: [
+                    { name: "Mr. Chris Green", role: "Career Counselor", email: "cgreen@example.com" }
+                ],
+                contacts: []
+            }
+        };
+
+        // --- Function to get learner ID from URL (or hardcode for demonstration) ---
+        function getLearnerIdFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('learnerId') || "learner123"; // Default to learner123 if no ID in URL
+        }
+
+        // --- Populate the menu ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const learnerId = getLearnerIdFromUrl();
+            const learner = learnersData[learnerId];
+
+            if (learner) {
+                document.getElementById('learnerName').textContent = `Welcome, ${learner.name}!`;
+
+                // Populate Classes
+                const classesList = document.getElementById('classesList');
+                classesList.innerHTML = ''; // Clear existing content
+                learner.classes.forEach(cls => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${cls.name}</strong> (ID: ${cls.id})`;
+                    classesList.appendChild(li);
+                });
+
+                // Populate Teachers
+                const teachersList = document.getElementById('teachersList');
+                teachersList.innerHTML = ''; // Clear existing content
+                learner.teachers.forEach(teacher => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${teacher.name}</strong> (${teacher.subject})`;
+                    teachersList.appendChild(li);
+                });
+
+                // Populate Advisors
+                const advisorsList = document.getElementById('advisorsList');
+                advisorsList.innerHTML = ''; // Clear existing content
+                learner.advisors.forEach(advisor => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${advisor.name}</strong> (${advisor.role}) <a href="mailto:${advisor.email}">Email</a>`;
+                    advisorsList.appendChild(li);
+                });
+
+                // Populate Other Contacts
+                const contactsList = document.getElementById('contactsList');
+                contactsList.innerHTML = ''; // Clear existing content
+                if (learner.contacts && learner.contacts.length > 0) {
+                    learner.contacts.forEach(contact => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<strong>${contact.name}</strong>: ${contact.phone}`;
+                        contactsList.appendChild(li);
+                    });
+                } else {
+                    const li = document.createElement('li');
+                    li.textContent = "No additional contacts listed.";
+                    contactsList.appendChild(li);
+                }
+
+            } else {
+                document.getElementById('learnerName').textContent = "Learner not found.";
+                // Optionally clear other sections if learner is not found
+                document.getElementById('classesList').innerHTML = '';
+                document.getElementById('teachersList').innerHTML = '';
+                document.getElementById('advisorsList').innerHTML = '';
+                document.getElementById('contactsList').innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>

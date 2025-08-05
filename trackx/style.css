@@ -1,0 +1,117 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fffaf3;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+  background-color: #fffaf3;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.header {
+  background-color: #004b66;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+  background-color: #004b66;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: white;
+  margin: 0;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #003b5c;
+  margin: 2rem 0 1.5rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  background-color: #f6f2ea;
+  color: #333;
+}
+
+.input-group .icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: #777;
+  font-size: 1.1rem;
+}
+
+.forgot {
+  text-align: right;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.forgot a {
+  color: #003b5c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  color: white;
+  background-color: #003b5c;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #005b89;
+}
+
+.signup {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.signup a {
+  color: #003b5c;
+  font-weight: 600;
+  text-decoration: none;
+}
